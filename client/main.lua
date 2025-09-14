@@ -1,4 +1,3 @@
-
 PlayerStatus = {}
 local loaded = false
 local metabolismActive = false
@@ -57,6 +56,29 @@ end)
 
 RegisterNetEvent('vorp:SelectedCharacter', function(charId)
     TriggerServerEvent("vorpmetabolism:GetStatus")
+end)
+
+--onclient resource start
+AddEventHandler('onClientResourceStart', function(resourceName)
+    if (GetCurrentResourceName() ~= resourceName) then
+        return
+    end
+    -- for tests
+    -- TriggerServerEvent("vorpmetabolism:GetStatus")
+    --Wait(5000)
+    -- SendNUIMessage({ action = "show_body" })
+    -- loaded = true
+    -- NUIEvents.UpdateHUD()
+    -- StartMetabolismThread()
+    -- StartMetabolismUpdatersThread()
+    -- StartMetabolismSaveDBThread()
+    -- StartRadarControlHudThread()
+    -- StartMetabolismSetThread()
+end)
+
+--show body only after player has fully spawned
+AddEventHandler("vorp_core:Client:OnPlayerSpawned", function()
+    SendNUIMessage({ action = "show_body" })
 end)
 
 -- [ THREADS ] --
@@ -137,7 +159,7 @@ function StartRadarControlHudThread()
         while true do
             if (not loaded) then return end
             Wait(1000)
-            if ((IsRadarHidden()) or (IsPauseMenuActive()) or (not ApiCalls.APIShowOn) or (NetworkIsInSpectatorMode()) or (IsHudHidden())) then
+            if ((IsRadarHidden()) or (not ApiCalls.APIShowOn) or (NetworkIsInSpectatorMode()) or (IsHudHidden())) then
                 NUIEvents.ShowHUD(false);
             else
                 NUIEvents.ShowHUD(true);

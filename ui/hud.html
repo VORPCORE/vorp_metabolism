@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 
     <title>Vorp Metabolism</title>
@@ -29,7 +30,9 @@
     </div>
 
     <script type="text/javascript">
-        $("document").ready(function() {
+        $("document").ready(function () {
+            //hide body
+            $('body').hide();
 
             var sizeWater = 43.0;
             var sizeFood = 43.0;
@@ -61,7 +64,8 @@
                 },
             });
 
-            window.addEventListener("message", function(event) {
+            window.addEventListener("message", function (event) {
+
                 if (event.data.action == "update") {
                     barwater.circleProgress('value', event.data.water);
                     barfood.circleProgress('value', event.data.food);
@@ -75,6 +79,9 @@
                     $('.water-icon').fadeIn();
                     $('.food').fadeIn();
                     $('.food-icon').fadeIn();
+                } else if (event.data.action == "show_body") {
+                    // show body
+                    $('body').fadeIn();
                 }
             });
 
