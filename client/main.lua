@@ -128,8 +128,8 @@ function StartMetabolismUpdatersThread()
                 if (PlayerStatus["Thirst"] < 0) then
                     PlayerStatus["Thirst"] = 0;
                 end
-                if (PlayerStatus["Thirst"] < 0) then
-                    PlayerStatus["Thirst"] = 0;
+                if (PlayerStatus["Hunger"] < 0) then
+                    PlayerStatus["Hunger"] = 0;
                 end
             end
 
