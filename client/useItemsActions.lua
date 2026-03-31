@@ -70,17 +70,17 @@ RegisterNetEvent('vorpmetabolism:useItem', function(index, label)
     end
     -- Golds
     if (Config["ItemsToUse"][index]["OuterCoreHealthGold"] > 0.0) then
-        EnableAttributeOverpower(PlayerPedId(), 0, Config["ItemsToUse"][index]["OuterCoreHealthGold"], true)
+        EnableAttributeOverpower(PlayerPedId(), 0, Config["ItemsToUse"][index]["OuterCoreHealthGold"] + 0.0, true)
     end
     if (Config["ItemsToUse"][index]["InnerCoreHealthGold"] > 0.0) then
-        EnableAttributeOverpower(PlayerPedId(), 0, Config["ItemsToUse"][index]["InnerCoreHealthGold"], true)
+        EnableAttributeOverpower(PlayerPedId(), 0, Config["ItemsToUse"][index]["InnerCoreHealthGold"]+ 0.0, true)
     end
 
     if (Config["ItemsToUse"][index]["OuterCoreStaminaGold"] > 0.0) then
-        EnableAttributeOverpower(PlayerPedId(), 1, Config["ItemsToUse"][index]["OuterCoreStaminaGold"], true)
+        EnableAttributeOverpower(PlayerPedId(), 1, Config["ItemsToUse"][index]["OuterCoreStaminaGold"] + 0.0, true)
     end
     if (Config["ItemsToUse"][index]["InnerCoreStaminaGold"] > 0.0) then
-        EnableAttributeOverpower(PlayerPedId(), 1, Config["ItemsToUse"][index]["InnerCoreStaminaGold"], true)
+        EnableAttributeOverpower(PlayerPedId(), 1, Config["ItemsToUse"][index]["InnerCoreStaminaGold"] + 0.0, true)
     end
 
     if (Config["ItemsToUse"][index]["Animation"] == "eat") then
