@@ -1,7 +1,7 @@
 RegisterNetEvent('vorpmetabolism:useItem', function(index, label)
     PlaySoundFrontend("Core_Fill_Up", "Consumption_Sounds", true, 0)
 
-    if (Config["ItemsToUse"][index]["Thirst"] ~= 0) then
+    if (Config["ItemsToUse"][index]["Thirst"] > 0) then
         local newThirst = PlayerStatus["Thirst"] + Config["ItemsToUse"][index]["Thirst"]
 
         if (newThirst > 1000) then
@@ -13,7 +13,7 @@ RegisterNetEvent('vorpmetabolism:useItem', function(index, label)
         end
         PlayerStatus["Thirst"] = newThirst
     end
-    if (Config["ItemsToUse"][index]["Hunger"] ~= 0) then
+    if (Config["ItemsToUse"][index]["Hunger"] > 0) then
         local newHunger = PlayerStatus["Hunger"] + Config["ItemsToUse"][index]["Hunger"]
 
         if (newHunger > 1000) then
@@ -26,7 +26,7 @@ RegisterNetEvent('vorpmetabolism:useItem', function(index, label)
 
         PlayerStatus["Hunger"] = newHunger
     end
-    if (Config["ItemsToUse"][index]["Metabolism"] ~= 0) then
+    if (Config["ItemsToUse"][index]["Metabolism"] > 0) then
         local newMetabolism = PlayerStatus["Metabolism"] + Config["ItemsToUse"][index]["Metabolism"]
 
         if (newMetabolism > 10000) then
@@ -39,7 +39,7 @@ RegisterNetEvent('vorpmetabolism:useItem', function(index, label)
 
         PlayerStatus["Metabolism"] = newMetabolism
     end
-    if (Config["ItemsToUse"][index]["Stamina"] ~= 0) then
+    if (Config["ItemsToUse"][index]["Stamina"] > 0) then
         local stamina = GetAttributeCoreValue(PlayerPedId(), 1)
         local newStamina = stamina + Config["ItemsToUse"][index]["Stamina"]
 
@@ -69,17 +69,17 @@ RegisterNetEvent('vorpmetabolism:useItem', function(index, label)
         SetEntityHealth(PlayerPedId(), newhealth, 0)
     end
     -- Golds
-    if (Config["ItemsToUse"][index]["OuterCoreHealthGold"] ~= 0.0) then
+    if (Config["ItemsToUse"][index]["OuterCoreHealthGold"] > 0.0) then
         EnableAttributeOverpower(PlayerPedId(), 0, Config["ItemsToUse"][index]["OuterCoreHealthGold"], true)
     end
-    if (Config["ItemsToUse"][index]["InnerCoreHealthGold"] ~= 0.0) then
+    if (Config["ItemsToUse"][index]["InnerCoreHealthGold"] > 0.0) then
         EnableAttributeOverpower(PlayerPedId(), 0, Config["ItemsToUse"][index]["InnerCoreHealthGold"], true)
     end
 
-    if (Config["ItemsToUse"][index]["OuterCoreStaminaGold"] ~= 0.0) then
+    if (Config["ItemsToUse"][index]["OuterCoreStaminaGold"] > 0.0) then
         EnableAttributeOverpower(PlayerPedId(), 1, Config["ItemsToUse"][index]["OuterCoreStaminaGold"], true)
     end
-    if (Config["ItemsToUse"][index]["InnerCoreStaminaGold"] ~= 0.0) then
+    if (Config["ItemsToUse"][index]["InnerCoreStaminaGold"] > 0.0) then
         EnableAttributeOverpower(PlayerPedId(), 1, Config["ItemsToUse"][index]["InnerCoreStaminaGold"], true)
     end
 
