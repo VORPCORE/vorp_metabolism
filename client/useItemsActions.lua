@@ -49,7 +49,7 @@ RegisterNetEvent('vorpmetabolism:useItem', function(index, label)
 
         Citizen.InvokeNative(0xC6258F41D86676E0, PlayerPedId(), 1, newStamina) -- SetAttributeCoreValue native
     end
-    if (Config["ItemsToUse"][index]["InnerCoreHealth"] ~= 0) then
+    if (Config["ItemsToUse"][index]["InnerCoreHealth"] > 0) then
         local health = GetAttributeCoreValue(PlayerPedId(), 0)
         local newhealth = health + Config["ItemsToUse"][index]["InnerCoreHealth"]
 
@@ -59,7 +59,7 @@ RegisterNetEvent('vorpmetabolism:useItem', function(index, label)
 
         Citizen.InvokeNative(0xC6258F41D86676E0, PlayerPedId(), 0, newhealth) -- SetAttributeCoreValue native
     end
-    if (Config["ItemsToUse"][index]["OuterCoreHealth"] ~= 0) then
+    if (Config["ItemsToUse"][index]["OuterCoreHealth"] > 0) then
         local health = GetEntityHealth(PlayerPedId())
         local newhealth = health + Config["ItemsToUse"][index]["OuterCoreHealth"]
 
